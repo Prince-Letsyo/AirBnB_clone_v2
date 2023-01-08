@@ -24,7 +24,10 @@ class test_Amenity(test_basemodel):
     def test_name2(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.name), str)
+        if storage_t == 'db':
+            self.assertEqual(type(new.name), None)
+        else:
+            self.assertEqual(type(new.name), str)
 
 
 class Test_PEP8(unittest.TestCase):

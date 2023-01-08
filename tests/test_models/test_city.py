@@ -23,13 +23,18 @@ class test_City(test_basemodel):
     def test_state_id(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.state_id), str)
+        if db == DB:
+            self.assertEqual(type(new.state_id), None)
+        else:
+            self.assertEqual(type(new.state_id), str)
 
     def test_name(self):
         """ """
         new = self.value()
-
-        self.assertEqual(type(new.name), str)
+        if db == DB:
+            self.assertEqual(type(new.name), None)
+        else:
+            self.assertEqual(type(new.name), str)
 
 
 class Test_PEP8(unittest.TestCase):
