@@ -213,6 +213,7 @@ class TestBaseModel(unittest.TestCase):
         """test if the base is an type BaseModel"""
         self.assertTrue(isinstance(self.base, BaseModel))
 
+    @unittest.skipIf(db == DB, 'FILE ONLY')
     def test_save_BaesModel(self):
         """test if the save works"""
         self.base.save()

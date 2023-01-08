@@ -5,7 +5,10 @@ from tests.test_models.test_base_model import test_basemodel
 from models.city import City
 from pycodestyle import StyleGuide
 from models import BaseModel
-from os import remove
+from os import remove, getenv
+from models.stringtemplates import HBNB_TYPE_STORAGE, DB, FILE
+
+db = getenv(HBNB_TYPE_STORAGE, FILE)
 
 
 class test_City(test_basemodel):
@@ -89,6 +92,7 @@ class TestCity(unittest.TestCase):
         self.assertEqual(type(self.city.name), str)
         self.assertEqual(type(self.city.state_id), str)
 
+    @unittest.skipIf(db == DB, 'FILE ONLY')
     def test_save_City(self):
         """test if the save works"""
         self.city.save()
