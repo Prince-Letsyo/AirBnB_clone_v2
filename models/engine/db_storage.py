@@ -52,7 +52,6 @@ class DBStorage:
 
     def new(self, obj) -> None:
         '''Add object to DB'''
-        print('Object to save =>', obj)
         self.__session.add(obj)
 
     def save(self):

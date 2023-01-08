@@ -2,6 +2,12 @@
 """ """
 from tests.test_models.test_base_model import test_basemodel
 from models.place import Place
+import unittest
+from models.stringtemplates import HBNB_TYPE_STORAGE, DB, FILE
+from os import getenv
+
+
+db = getenv(HBNB_TYPE_STORAGE, FILE)
 
 
 class test_Place(test_basemodel):
@@ -63,6 +69,7 @@ class test_Place(test_basemodel):
         new = self.value()
         self.assertEqual(type(new.latitude), float)
 
+    @unittest.skipIf(db == DB, 'FILE Only')
     def test_amenity_ids(self):
         """ """
         new = self.value()
