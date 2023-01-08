@@ -50,10 +50,8 @@ class DBStorage:
                             database[k] = obj
             return database
 
-    def new(self, obj=None) -> None:
+    def new(self, obj) -> None:
         '''Add object to DB'''
-        if obj == None:
-            return
         self.__session.add(obj)
 
     def save(self):
